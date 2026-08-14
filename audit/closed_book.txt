@@ -1,0 +1,50 @@
+CLOSED-BOOK AUDIT
+run: 2026-08-11T10:06:38Z
+gold HEAD: e079024b809568f28cded5537203dfd52f5b04ae
+
+SCOPE. The competition forbids retrieval, external corpora, and KB lookup
+AT INFERENCE. Fetching the open weights once, before inference, is not
+inference. This audit therefore separates the two, and does not pretend the
+weights materialised on their own:
+  STAGING (network permitted, runs once, no model call):  jobs/download.sbatch
+  INFERENCE (must be offline):  jobs/canary.sbatch jobs/capacity.sbatch
+                                jobs/round2.sbatch jobs/test.sbatch
+
+4a. network/library imports in INFERENCE code and INFERENCE jobs
+    PASS (no matches)
+
+    (jobs/download.sbatch does import huggingface_hub, by design: it is the
+     staging step and makes no model call. Listed here rather than hidden.)
+
+4b. data files inside the published tree
+    PASS (none)
+    Allowlist enforced in code: pipeline/common.py load_split() raises
+    ClosedBookViolation for any split outside {train,val,test}. Tested:
+    pipeline/tests/test_parsers.py::test_load_split_refuses_anything_off_the_allowlist
+
+4c. fork hygiene
+    PASS. No competitor repository is cloned into this tree. Recipes are
+    reimplementations from published method descriptions.
+      ruggsea/lmkbc26-share      NO LICENSE -> no code taken, method cited only
+      dukesun99/elicitation...   CC-BY-4.0  -> credited, not copied
+      lm-kbc/dataset2026         Apache-2.0 -> evaluate.py used unmodified
+    No hardcoded factual table (no country-adjacency list, no exchange list,
+    no integral-territory map) ships in this system.
+
+4d. offline environment asserted in every INFERENCE job
+    PASS  jobs/canary.sbatch
+    PASS  jobs/capacity.sbatch
+    PASS  jobs/round2.sbatch
+    PASS  jobs/test.sbatch
+
+5. parameter budget
+    google/gemma-4-31B @ 5bbc2fb1c1b2
+    31273088876 params, cap 32000000000, headroom 726911124
+    inference-time neural components: ['google/gemma-4-31B']
+    method: Sum of every tensor in every safetensors shard, counted from the shard headers (dtype + shape) read directly by HTTP range request. Not taken from any reported metadata field.
+
+6. no training of any kind: base completion only. No fine-tune, no LoRA,
+   no trained probe or classifier anywhere in pipeline/.
+
+7. test suite
+35 passed in 0.02s

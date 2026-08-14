@@ -1,0 +1,26 @@
+{
+ "countryLandBordersCountry": {
+  "channel": "borders_list",
+  "param": 0.45
+ },
+ "personHasCityOfDeath": {
+  "channel": "death_obituary",
+  "param": 0.35
+ },
+ "companyTradesAtStockExchange": {
+  "channel": "stock_sentinel",
+  "param": 0.4
+ },
+ "hasArea": {
+  "channel": "area_lead",
+  "param": 1.0
+ },
+ "hasCapacity": {
+  "channel": "cap_recite",
+  "param": 1.0
+ },
+ "awardWonBy": {
+  "channel": "award_list",
+  "param": 0.1
+ }
+}

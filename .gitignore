@@ -1,0 +1,22 @@
+# generated artifacts
+pools/
+submissions/
+__pycache__/
+*.pyc
+.DS_Store
+
+# competitor repos are read for method only and never vendored
+refs/
+
+# the official dataset is a separate Apache-2.0 repo; clone it, do not fork it here
+dataset2026/
+
+# internal campaign documents. These are a research diary and competitive
+# strategy notes, not part of the required code deliverable. Remove these three
+# lines if you want the full working record published.
+NEXT.local.md
+PLAN.local.md
+.intel-reminders
+
+# Private working notes and strategy diary, not part of the code deliverable.
+notes/

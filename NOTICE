@@ -1,0 +1,14 @@
+LM-KBC 2026 closed-book system
+Copyright 2026 the authors.
+
+Licensed under the Apache License, Version 2.0.
+
+This product includes the official evaluation script evaluate.py from
+lm-kbc/dataset2026 (Apache-2.0), used unmodified as the sole scorer.
+
+Portions of the numeric elicitation design follow
+dukesun99/elicitation-beats-selection (CC BY 4.0), credited in the paper.
+
+Per-relation elicitation recipes are independent reimplementations from the
+method description published by ruggsea/lmkbc26-share. That repository carries
+no licence file, therefore no code from it is included here.

@@ -1,0 +1,32 @@
+{
+ "model": "google/gemma-4-31B",
+ "revision": "5bbc2fb1c1b2c611d06e3d9f23c170ba21659d89",
+ "measured_on": "2026-08-11",
+ "method": "Sum of every tensor in every safetensors shard, counted from the shard headers (dtype + shape) read directly by HTTP range request. Not taken from any reported metadata field.",
+ "components": {
+  "text_transformer": 29288059196,
+  "embed_tokens_tied": 1409286144,
+  "vision_tower": 575743536
+ },
+ "total_inference_time_parameters": 31273088876,
+ "cap": 32000000000,
+ "under_cap": true,
+ "headroom": 726911124,
+ "cross_checks": {
+  "components_sum_equals_total": true,
+  "sum_of_tensor_bytes": 62546177752,
+  "index_metadata_total_size": 62546177752,
+  "bytes_match_index": true,
+  "bytes_div_2_equals_params": true,
+  "lm_head_tensor_present_in_checkpoint": false,
+  "config_tie_word_embeddings": true
+ },
+ "vision_tower_note": "The 0.576B vision tower is counted even though this system is text-only, because the checkpoint loads it. Text-only would be 30,697,345,340 parameters. We report the larger, conservative figure.",
+ "hf_page_display": 32682372656,
+ "hf_page_discrepancy": 1409283780,
+ "hf_page_explanation": "The hosting page reports 32.68B, which is 1,409,283,780 above the measured checkpoint and would appear to exceed the cap. That difference equals the tied embedding matrix (262144 x 5376 = 1,409,286,144) to within 2,364 parameters, and no lm_head tensor exists in either shard, so the page appears to count the tied embedding a second time as an output projection. The served model holds one copy.",
+ "inference_time_neural_components": [
+  "google/gemma-4-31B"
+ ],
+ "headroom_consequence": "0.727B of headroom excludes any second neural component: no agreement sidecar (adding Qwen3-4B would total 35.29B), no reranker, no NLI filter, no speculative-decoding draft model. All post-generation logic in this system is non-neural post-processing, which the rules permit."
+}
