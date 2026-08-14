@@ -83,6 +83,9 @@ including the effort spent on the wrong side of it, because the same
 uncontrolled statistic is what the rest of this literature uses to direct its
 effort.
 
+Code, prompts, seeds, threshold grids, and the parameter audit are available at
+\url{https://github.com/thylinao1/lm-kbc-2026}.
+
 \section{Task, data, and metric}
 
 Six relations, 477 train rows, 475 validation rows, 475 test rows. Objects are
@@ -536,18 +539,21 @@ numeric aggregator is supported by a confidence interval excluding zero only for
 \texttt{hasArea}; for \texttt{hasCapacity} the interval includes zero and the
 choice ships as provisional.
 
-\section*{Reproducibility statement}
+\bibliography{custom}
+
+\appendix
+
+\section{Reproducibility}
+\label{app:repro}
 
 Code, prompts, seeds, threshold grids, and the parameter audit are available at
 \url{https://github.com/thylinao1/lm-kbc-2026}. Pools are regenerable from the
 committed configuration, and the manifest hash for every pool consumed by a
 submitted predictions file is recorded alongside that file. The full experimental
 record, including the runs that failed, is in \texttt{NOTES.local.md} in that
-repository.
-
-\bibliography{custom}
-
-\appendix
+repository. All figures reported here are produced by the official
+\texttt{evaluate.py} from \texttt{lm-kbc/dataset2026}, imported directly rather
+than parsed from its printed output.
 
 \section{Negative results and implementation faults in full}
 \label{app:negative}
