@@ -673,6 +673,16 @@ alongside that file.
 
 ## References
 
-TODO: format to ACL style. Cite the two public 2026 systems, the 2025 winner and
-runner up from the CEUR proceedings, the self consistency line of work, and the
-rank then select finding on verification probes.
+This markdown file is the working draft. The submitted paper is the ACL
+formatted build in `paper/build/`, whose sources are `paper.tex` and
+`custom.bib`, and whose output is `paper/build/paper.pdf`. References are
+maintained in `custom.bib`:
+
+- Singhania, Nguyen and Razniewski (2022), LM-KBC task origin, CEUR Vol-3274.
+- Razniewski, Kalo, Singhania, Pan, Nguyen and Zhang, eds. (2024), KBC-LM and
+  LM-KBC joint proceedings, CEUR Vol-3853.
+- Kalo, Razniewski, Zhang and Nguyen (2025), LM-KBC 2025 overview and results,
+  CEUR Vol-4041.
+- Wang et al. (2023), self consistency, ICLR, arXiv:2203.11171.
+- `ruggsea/lmkbc26-share` and `dukesun99/elicitation-beats-selection`, the two
+  public 2026 systems, credited in NOTICE.

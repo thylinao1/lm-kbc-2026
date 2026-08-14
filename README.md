@@ -10,8 +10,25 @@ training.
 
 ## Result
 
-TODO(result): final test macro F1 and the per relation table, filled from
-NOTES.local.md before release.
+**0.7060 all-rows macro-F1 on the official test set**, leading on five of the six
+relations. Measured by the official grader over all 475 test rows.
+
+| relation | test rows | F1 |
+|---|---:|---:|
+| `countryLandBordersCountry` | 67 | 0.9786 |
+| `hasArea` | 100 | 0.8700 |
+| `companyTradesAtStockExchange` | 100 | 0.8530 |
+| `personHasCityOfDeath` | 100 | 0.6100 |
+| `awardWonBy` | 10 | 0.3484 |
+| `hasCapacity` | 98 | 0.3367 |
+| **overall** | **475** | **0.7060** |
+
+The paper is `paper/build/paper.pdf`. Its central result is that oracle coverage
+statistics in this literature have no null control: permuting gold values across
+subjects shows 35.5 of the 84.5 coverage points on `hasCapacity` are coincidence
+rather than recall, which cuts the apparent selection headroom from 0.443 to
+0.203. Three non-frequency instruments then independently agree the relation is
+knowledge bound, not selection bound.
 
 ## Eligibility
 
