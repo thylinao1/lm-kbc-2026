@@ -22,7 +22,7 @@ from common import TEST_ROWS, TOTAL_TEST_ROWS, gold_primary, load_pool, rows_for
 from substrate_ev import _args, hit
 
 # Confirmed by the grader (NOTES.local.md, submission 6 of 100 returned 0.7060).
-OURS = {"countryLandBordersCountry": 0.9786, "hasArea": 0.8700,
+MINE = {"countryLandBordersCountry": 0.9786, "hasArea": 0.8700,
         "companyTradesAtStockExchange": 0.8530, "hasCapacity": 0.3367,
         "personHasCityOfDeath": 0.6100, "awardWonBy": 0.3484}
 RUGGSEA = {"countryLandBordersCountry": 0.9753, "hasArea": 0.8500,
@@ -45,19 +45,19 @@ def overall(per_rel: dict[str, float]) -> float:
 
 def main() -> int:
     out = {}
-    ov, bar = overall(OURS), overall(RUGGSEA)
-    print(f"confirmed board: ours {ov:.4f}  leader {bar:.4f}  margin {ov-bar:+.4f} "
+    ov, bar = overall(MINE), overall(RUGGSEA)
+    print(f"confirmed board: mine {ov:.4f}  leader {bar:.4f}  margin {ov-bar:+.4f} "
           f"= {(ov-bar)*TOTAL_TEST_ROWS:.1f} rows of {TOTAL_TEST_ROWS}")
     print(f"one row anywhere = {1/TOTAL_TEST_ROWS:.5f} overall\n")
 
-    print("=== what a whole-system swap puts at risk (the 5 relations we lead)")
-    led = [r for r in OURS if OURS[r] > RUGGSEA[r]]
+    print("=== what a whole-system swap puts at risk (the 5 relations I lead)")
+    led = [r for r in MINE if MINE[r] > RUGGSEA[r]]
     rows_led = sum(TEST_ROWS[r] for r in led)
     print(f"  relations led: {len(led)}  rows led: {rows_led} of {TOTAL_TEST_ROWS} "
           f"({rows_led/TOTAL_TEST_ROWS:.1%} of the score)")
     for r in sorted(led, key=lambda k: -TEST_ROWS[k]):
-        margin = OURS[r] - RUGGSEA[r]
-        print(f"    {r:30s} {TEST_ROWS[r]:3d} rows  ours {OURS[r]:.4f}  margin {margin:+.4f}"
+        margin = MINE[r] - RUGGSEA[r]
+        print(f"    {r:30s} {TEST_ROWS[r]:3d} rows  mine {MINE[r]:.4f}  margin {margin:+.4f}"
               f"  -> lead survives a drop of {margin:.4f} F1 ({margin*TEST_ROWS[r]:.2f} rows)")
     print(f"  margin over the leader is {(ov-bar)*TOTAL_TEST_ROWS:.1f} rows, so the swap may "
           f"lose at most\n  {(ov-bar)*TOTAL_TEST_ROWS:.1f} rows NET across all 475 before "
@@ -69,7 +69,7 @@ def main() -> int:
     rows_be = []
     for drop in (0.00, 0.01, 0.02, 0.03, 0.05, 0.10, 0.15):
         lost = drop * other_rows
-        need = OURS["hasCapacity"] + lost / TEST_ROWS["hasCapacity"]
+        need = MINE["hasCapacity"] + lost / TEST_ROWS["hasCapacity"]
         rows_be.append({"drop": drop, "rows_lost": lost, "capacity_needed": need})
         flag = "" if need <= 1.0 else "  IMPOSSIBLE (>1.0)"
         print(f"  {drop:28.2f} {lost:10.1f} {need:19.4f} {'':15}{flag}")
@@ -83,13 +83,13 @@ def main() -> int:
         "union coverage over 7 frames (val, measured here)": 0.9381,
     }
     for k, v in cap_ceils.items():
-        print(f"  {v:.4f}  overall if reached = {overall({**OURS, 'hasCapacity': v}):.4f} "
-              f"(delta {overall({**OURS,'hasCapacity':v})-ov:+.4f})   {k}")
+        print(f"  {v:.4f}  overall if reached = {overall({**MINE, 'hasCapacity': v}):.4f} "
+              f"(delta {overall({**MINE,'hasCapacity':v})-ov:+.4f})   {k}")
     out["capacity_ceilings"] = cap_ceils
 
     print("\n=== affordable degradation at each plausible capacity outcome")
     for cap in (0.40, 0.435, 0.45, 0.50):
-        gain_rows = (cap - OURS["hasCapacity"]) * TEST_ROWS["hasCapacity"]
+        gain_rows = (cap - MINE["hasCapacity"]) * TEST_ROWS["hasCapacity"]
         afford = (gain_rows + (ov - bar) * TOTAL_TEST_ROWS) / other_rows
         print(f"  capacity {cap:.3f} (+{gain_rows:.1f} rows): the other 5 relations may lose at "
               f"most {afford:.4f} average F1 before first place is lost")
@@ -102,7 +102,7 @@ def main() -> int:
         print(f"  {r:30s} {what:34s} +{g:.4f} rel = +{contrib:.4f} overall")
     print(f"  TOTAL board-earned tuning on the current substrate: +{tot:.4f} overall "
           f"= {tot*TOTAL_TEST_ROWS:.1f} rows")
-    print(f"  (our lead is {(ov-bar)*TOTAL_TEST_ROWS:.1f} rows, i.e. {tot/(ov-bar):.1f}x smaller "
+    print(f"  (my lead is {(ov-bar)*TOTAL_TEST_ROWS:.1f} rows, i.e. {tot/(ov-bar):.1f}x smaller "
           f"than the tuning a new substrate would have to re-earn)")
     out["retuning_debt"] = tot
 

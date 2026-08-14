@@ -1,4 +1,4 @@
-"""awardWonBy: is the relation recall-capped by the POOL, or by our threshold?
+"""awardWonBy: is the relation recall-capped by the POOL, or by my threshold?
 
 Everything here reads only cached draws and the public train/val gold. No
 network, no external fact source.

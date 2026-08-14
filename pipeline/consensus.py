@@ -8,7 +8,7 @@ Compares, on the same subjects and the same cached draws:
      register on top of its frequency within a register
 
 If (3) does not beat (1) and (2) by more than the measurement floor, the idea is
-dead and we say so in the log rather than shipping it.
+dead and I say so in the log rather than shipping it.
 """
 from __future__ import annotations
 

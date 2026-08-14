@@ -3,7 +3,7 @@
 Design rules baked in here:
   * BASE model, plain /v1/completions semantics. No chat template, ever.
   * Demos are FIXED per (relation, channel, config). No per-draw resampling:
-    it defeats vLLM prefix caching for a gain inside our own noise band.
+    it defeats vLLM prefix caching for a gain inside my own noise band.
   * Demos come from TRAIN only. val is a selection set, test has no gold.
   * Every channel declares its own stop list and max_tokens. The vLLM default
     max_tokens=16 silently truncates the recitation channels.
@@ -85,7 +85,7 @@ def pick_demos_nn(relation: str, n: int, query: str, seed: int = 1234) -> list[d
     at random (balanced or log-stratified) and reuses it for all subjects.
 
     Why it targets the measured failure. Capacity subjects carry a location
-    suffix ("Ibn-e-Qasim Bagh Stadium in Multan"), and our dominant error is the
+    suffix ("Ibn-e-Qasim Bagh Stadium in Multan"), and my dominant error is the
     model failing to place a specific venue and falling back on a round "typical
     stadium" size: predictions that are a multiple of 10000 are right 27.8% of
     the time against 80.0% for specific values. Demonstrations drawn from the
@@ -259,7 +259,7 @@ def render_capacity_rich(subject: str, demos: list[dict]) -> str:
     frame), and the same change took hasArea from 0.8100 to 0.8700.
 
     The open question is whether MORE grounding helps. Capacity's dominant error
-    is a round-number attractor: our prediction is right 27.8% of the time when
+    is a round-number attractor: my prediction is right 27.8% of the time when
     it is a multiple of 10000 and 80.0% when it is not, which says the model
     falls back on "typical stadium size" when it cannot place the venue. Asking
     it to state where the venue is, when it opened and who plays there first
@@ -418,7 +418,7 @@ def render_death_year(subject: str, demos: list[dict]) -> str:
     """Elicit the death YEAR, not the city.
 
     Motivation from the val error breakdown at tau=0.35: of 100 subjects, 12 are
-    rows where the person is still alive and we confidently named a city. That is
+    rows where the person is still alive and I confidently named a city. That is
     the single largest addressable failure mode on this relation, it is worth
     more on test (48% empty against val's 39%), and it is not a selection problem
     at all, so no amount of better city-selection touches it.
@@ -433,7 +433,7 @@ def render_death_year(subject: str, demos: list[dict]) -> str:
     parts = ["Biographical register: year of death, or 'still living'.\n"]
     for d in demos:
         val = "still living" if not gold_primary(d) else "died"
-        # we do not have gold years; demonstrate only the living/deceased shape
+        # I do not have gold years; demonstrate only the living/deceased shape
         parts.append(f"{d['SubjectEntity']}: {val}\n")
     parts.append(f"{subject}:")
     return "\n".join(parts)
@@ -482,7 +482,7 @@ def render_death_recite(subject: str, demos: list[dict]) -> str:
     """Recitation register for place of death.
 
     The register hypothesis has now won on both relations where it was tried:
-    cap_recite is our best hasCapacity frame, and area_recite took hasArea from
+    cap_recite is my best hasCapacity frame, and area_recite took hasArea from
     0.8100 to 0.8700 past the leader after three non-recitation configurations
     all returned exactly 0.8100. The mechanism is to make the model recall
     biographical facts BEFORE committing, rather than answering cold.
@@ -601,7 +601,7 @@ def render_area_lead(subject: str, demos: list[dict]) -> str:
 
 
 def render_area_listing(subject: str, demos: list[dict]) -> str:
-    """Table register for areas. hasArea is our largest shortfall against the
+    """Table register for areas. hasArea is my largest shortfall against the
     field (0.76 against a published 0.85) and only one frame had been tried."""
     parts = ["| Place | Area (km2) |", "|---|---|"]
     for d in demos:
@@ -617,8 +617,8 @@ def render_area_recite(subject: str, demos: list[dict]) -> str:
     and the P3 probe proved it is NOT the frame: area_listing and area_lead score
     identically on test, 0.8100 both, with 10 rows differing and netting exactly
     zero. So the two untried axes are the REGISTER (recall facts before naming
-    the number, which is what made cap_recite our best capacity frame) and DEMO
-    DEPTH (the published system uses 100 log-stratified demonstrations; we use 64).
+    the number, which is what made cap_recite my best capacity frame) and DEMO
+    DEPTH (the published system uses 100 log-stratified demonstrations; I use 64).
     """
     parts = ["Reference notes on geographic features.\n"]
     for d in demos:

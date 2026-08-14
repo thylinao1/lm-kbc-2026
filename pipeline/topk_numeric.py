@@ -38,8 +38,8 @@ THE TWO TRAPS, handled explicitly
 (i)  evaluate.py deduplicates by normalize_string, which maps punctuation to
      spaces: "10000" -> "10000" but "10,000" -> "10 000". They are NOT
      duplicates, so both would consume precision while contributing at most one
-     tp. Every candidate we emit is rendered by format_number(), which is
-     comma-free, and we additionally assert the normalized forms are distinct.
+     tp. Every candidate I emit is rendered by format_number(), which is
+     comma-free, and I additionally assert the normalized forms are distinct.
 (ii) Two candidates within 5% of EACH OTHER can never both be true positives
      (tp is capped at 1) but both are counted in len(preds). Worse, they cannot
      even cover different golds: pred c is correct iff gold lies in

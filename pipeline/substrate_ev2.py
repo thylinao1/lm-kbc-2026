@@ -3,7 +3,7 @@ measure the same coverage structure on personHasCityOfDeath.
 
 The simulator in substrate_ev.py extrapolates to "errors fully decorrelated".
 That extrapolation is only worth anything if the simulator reproduces what
-actually happens at the correlation levels we can measure. So: for every real
+actually happens at the correlation levels I can measure. So: for every real
 frame pair on hasCapacity, measure (a) the phi of their error vectors, (b) what
 a parameter-free confidence router actually scores on that pair, then (c) run
 the simulator with `shared` calibrated to reproduce that phi and check it lands

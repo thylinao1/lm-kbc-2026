@@ -6,7 +6,7 @@ unanimous nor near-absent. Counting them per split says whether train+val can
 calibrate anything for the regime TEST is in.
 
 (2) If the union of correct names saturates as draws are added, the ceiling is
-the model's enumeration, not our selection rule, and no aggregation change can
+the model's enumeration, not my selection rule, and no aggregation change can
 reach the gold set. Reported as matched-gold coverage m/G at n draws.
 """
 from __future__ import annotations

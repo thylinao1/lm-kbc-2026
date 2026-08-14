@@ -20,7 +20,7 @@ from channels import CHANNELS
 
 
 # ------------------------------------------------------------------ normalisation
-# Mirrors evaluate.py so our vote counting groups exactly what the grader groups.
+# Mirrors evaluate.py so my vote counting groups exactly what the grader groups.
 
 _PUNCT_RE = re.compile(r"[^\w\s]|[+$<=>|~^]", re.UNICODE)
 
@@ -63,7 +63,7 @@ def parse_qa(pool: dict[str, list[str]], channel: str) -> dict:
 
     Crucially this separates an INTENTIONAL abstention (the model emitted the
     in-band sentinel: "none", "not listed", "still living") from a genuine
-    PARSE FAILURE (the model said something and our regex got nothing out of
+    PARSE FAILURE (the model said something and my regex got nothing out of
     it). Only the latter indicates a broken contract. Conflating them would
     fail the gate on exactly the relations whose abstention behaviour is the
     point.
@@ -174,7 +174,7 @@ def log_clusters(values: list[float], width: float = 0.05) -> list[list[float]]:
     units, so width=0.05 is a 12.2% window (10**0.05 = 1.122), NOT the grader's
     5%. Matching the grader exactly would be log10(1.05) = 0.0212.
 
-    We deliberately keep 0.05. Measured, on both numeric relations and both
+    I deliberately keep 0.05. Measured, on both numeric relations and both
     splits, the "correct" 0.0212 is WORSE: hasCapacity train 0.3088 -> 0.2941
     and val 0.3608 -> 0.3299; hasArea train 0.8611 -> 0.8333 and val 0.8500 ->
     0.8300. The two quantities are not the same thing. The grader's tolerance
@@ -207,7 +207,7 @@ def format_number(v: float) -> str:
     Rule: integers stay integers (no ".0" suffix, which is also what the demos
     show); anything below 1 keeps enough significant digits that the formatting
     error is far inside the grader's 5% tolerance; exponent notation is avoided
-    because the grader does a plain float() on the string and we do not need to
+    because the grader does a plain float() on the string and I do not need to
     find out how it handles "8.482e-03".
     """
     if v == int(v) and abs(v) >= 1:
@@ -226,7 +226,7 @@ def plausible_band(relation: str, lo_q: float = 0.0, hi_q: float = 1.0,
     Motivation, measured: 45 of 97 validation hasCapacity subjects have a pool
     containing the same leading digits at more than one order of magnitude (the
     model writes 1240 and 1240000 and "1.24 million" for the same fact). In 10
-    of those we answered wrong while a same-mantissa alternative in the pool was
+    of those I answered wrong while a same-mantissa alternative in the pool was
     correct. That is 10 rows, worth about 0.021 overall.
 
     Scale can be disambiguated without gold when the relation has a tight
@@ -235,7 +235,7 @@ def plausible_band(relation: str, lo_q: float = 0.0, hi_q: float = 1.0,
     six orders of magnitude, so no such band exists and this must NOT be applied
     there: it would discard correct answers.
 
-    Derived from TRAIN only, which is ours to use, and padded by `pad` in each
+    Derived from TRAIN only, which is mine to use, and padded by `pad` in each
     direction so the band never excludes a legitimately extreme test value.
     Returns None when the relation's range is too wide for the idea to be safe.
     """
@@ -324,10 +324,10 @@ def _rescue_round_attractor(out: list[str], draws: list[str], channel: str,
                             modulus: int = 1000) -> list[str]:
     """When the winner is a round number, prefer a supported non-round candidate.
 
-    Measured on hasCapacity: our prediction is correct 27.8% of the time when it
+    Measured on hasCapacity: my prediction is correct 27.8% of the time when it
     is a multiple of 10000 and 80.0% when it is not a multiple of 1000 (val).
     A specific value like 2048 means the model recalls the venue; 10000 means it
-    is guessing, and 10000 was our answer in 6 of the 10 val rows where the pool
+    is guessing, and 10000 was my answer in 6 of the 10 val rows where the pool
     held a correct alternative, wrong every time.
 
     Effect at min_share=0.15: train +0.0147, val +0.0103. Both point estimates

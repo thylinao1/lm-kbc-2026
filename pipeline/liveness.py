@@ -5,7 +5,7 @@ into three failure families, and they need different fixes:
 
     33  correct answer
     27  correct abstention
-    12  FALSE ANSWER: the person is alive and we named a city
+    12  FALSE ANSWER: the person is alive and I named a city
     13  answer was in the pool but the selector missed it
     15  answer genuinely absent from the pool
 
@@ -16,7 +16,7 @@ the city channel does not contain.
 
 The rule tested here is deliberately NOT a veto. Prior work reports that a
 standalone yes/no gate was inert on this relation. Instead the liveness vote
-share is combined with the city vote share: we answer only if the city clears
+share is combined with the city vote share: I answer only if the city clears
 its own threshold AND the liveness channel is at least tau_live confident the
 person is deceased. tau_live = 0 recovers the current system exactly, so the
 comparison is nested and honest.

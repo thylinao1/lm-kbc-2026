@@ -168,7 +168,7 @@ def section3():
             n_empty += sum(1 for s in m if not g.get(s))
         tx = sum(1 for v in P("test", lo).values() if not v)
         print(f"    tau {lo:.4f}: {n_tot:2d} rows flip abstain->answer | gold EMPTY on {n_empty} "
-              f"({n_empty/max(1,n_tot):.0%}) | our answer CORRECT on {corr:.2f} "
+              f"({n_empty/max(1,n_tot):.0%}) | my answer CORRECT on {corr:.2f} "
               f"({corr/max(1,n_tot):.0%}) | net {corr-n_empty:+.2f} row-points || TEST abstention "
               f"{sum(1 for v in base.values() if not v)}% -> {tx}%")
 

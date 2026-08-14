@@ -170,7 +170,7 @@ def simulate_second_substrate(rows: list[dict], beta: float, n_rep: int = 4000,
     """Upper bound on what a router can extract from a decorrelated substrate B.
 
     rows: A's real per-row (share, correct) on this relation.
-    beta: B's marginal accuracy on the relation (the thing we do not know).
+    beta: B's marginal accuracy on the relation (the thing I do not know).
     shared: 0.0 = B's errors are FULLY independent of A's (most favourable to the
             swap case). 1.0 = B fails on exactly the rows A fails on.
 

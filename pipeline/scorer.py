@@ -1,6 +1,6 @@
 """Thin wrapper around the OFFICIAL dataset2026/evaluate.py.
 
-We import the organizers' module and call its own functions rather than parsing
+I import the organizers' module and call its own functions rather than parsing
 its printed table. Two reasons that matter:
   * the printed table is pandas-formatted and rounds to 3 dp, which blurs the
     0.01-0.03 tau deltas this campaign is made of (and truncates columns with
@@ -28,9 +28,9 @@ def _ev():
 
     evaluate.py does `import pandas as pd` at module level but uses pandas ONLY
     inside main() (lines 342-351) to render the printed table. The scoring
-    functions we call are pure Python. On cluster envs without pandas we insert
+    functions I call are pure Python. On cluster envs without pandas I insert
     a stub module so the top-level import resolves; it can never be exercised,
-    because we never call main(). The scorer's arithmetic is untouched.
+    because I never call main(). The scorer's arithmetic is untouched.
     """
     try:
         import pandas  # noqa: F401
@@ -77,7 +77,7 @@ def score_one_relation(preds_by_subject: dict[str, list[str]], relation: str,
     """Score a single relation.
 
     Rows of OTHER relations are omitted from the prediction file, which the
-    scorer treats as empty predictions. Harmless, because we only read this
+    scorer treats as empty predictions. Harmless, because I only read this
     relation's rows back.
 
     `subjects` restricts the average to a subset of this relation's rows. This

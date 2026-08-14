@@ -4,7 +4,7 @@ Reads whatever result files exist in pools/ and emits the best available
 configuration per relation, applying the campaign's own selection discipline:
 
   * parameters come from the TRAIN argmax, never the val argmax. val is a
-    selection set and reading its argmax directly would compound the bias we
+    selection set and reading its argmax directly would compound the bias I
     already pay for using it as a gate.
   * for numeric relations, cross-frame consensus is chosen over the best single
     frame only if it wins on train AND its paired bootstrap against the best

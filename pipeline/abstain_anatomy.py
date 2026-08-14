@@ -171,7 +171,7 @@ def content_set(view: dict, cfg: dict) -> list[str]:
     gate, so this is exactly what the rule emits when it answers.
 
     For a single-threshold rule (death_obituary) tau does both jobs, so the
-    counterfactual "what would we have said" is the set at tau if non-empty and
+    counterfactual "what would I have said" is the set at tau if non-empty and
     otherwise the top-1 candidate. Returns [] only when the pool holds no
     candidate at all, in which case no answer is available at any threshold.
     """
@@ -191,7 +191,7 @@ def oracles(relation: str, split: str, cfg: dict,
 
     shipped          : the live rule.
     oracle_abstain   : abstain iff gold is empty; OBJECT CHOICE UNCHANGED.
-    oracle_content   : shipped abstain decision; objects perfect where we answer.
+    oracle_content   : shipped abstain decision; objects perfect where I answer.
     oracle_content_pool : shipped abstain decision; objects = best achievable
                        subset of the candidates actually present in the pool.
     Both perfect is 1.0 by construction and is not reported.
@@ -206,7 +206,7 @@ def oracles(relation: str, split: str, cfg: dict,
                for s in views}
     content = {s: content_set(v, cfg) for s, v in views.items()}
 
-    # oracle abstain: perfect gate, our content
+    # oracle abstain: perfect gate, my content
     orc_ab = {s: ([] if not gold.get(s) else content[s]) for s in views}
 
     rows_all = per_row({s: list(v["cands"] and [c[1] for c in v["cands"]] or [])
@@ -233,7 +233,7 @@ def oracles(relation: str, split: str, cfg: dict,
             sc_pool += 1.0 if not g else 0.0
             continue
         if not g:
-            continue  # answered on empty gold: 0 whatever we emit
+            continue  # answered on empty gold: 0 whatever I emit
         t = rows_all[s]["tp"]
         m = len(g)
         sc_pool += (2 * t / (t + m)) if t else 0.0

@@ -84,7 +84,7 @@ def build(config: dict, split: str, args) -> tuple[list[dict], dict]:
                            "mode": "consensus" if len(names) > 1 else "single"})
 
         # Optional secondary gate: a separate channel whose vote share must clear
-        # a threshold before we answer at all. Used for the liveness signal on
+        # a threshold before I answer at all. Used for the liveness signal on
         # personHasCityOfDeath, where the largest error family is naming a city
         # for someone still alive. Recorded in provenance so a submission is
         # never silently gated.
@@ -138,14 +138,14 @@ def presubmit_checks(rows: list[dict], split: str, dataset_dir: Path,
     report: dict = {}
     gold_rows = load_split(split)
 
-    ours = {(r["SubjectEntity"], r["Relation"]) for r in rows}
+    mine = {(r["SubjectEntity"], r["Relation"]) for r in rows}
     theirs = {(r["SubjectEntity"], r["Relation"]) for r in gold_rows}
     report["row_count"] = len(rows)
-    report["subject_set_matches_gold"] = ours == theirs
-    if ours != theirs:
+    report["subject_set_matches_gold"] = mine == theirs
+    if mine != theirs:
         raise PreSubmitFailure(
-            f"subject set mismatch: {len(ours - theirs)} extra, {len(theirs - ours)} missing. "
-            f"examples missing: {list(theirs - ours)[:5]}")
+            f"subject set mismatch: {len(mine - theirs)} extra, {len(theirs - mine)} missing. "
+            f"examples missing: {list(theirs - mine)[:5]}")
     if len(rows) != len(gold_rows):
         raise PreSubmitFailure(f"row count {len(rows)} != gold {len(gold_rows)}")
 

@@ -5,11 +5,11 @@ reported that on capacity their pool contained the gold for 76-77/100 subjects
 while their selector realized only 35-38, then exhausted 24+ aggregation-side
 mechanisms trying to close it. That gap is the campaign.
 
-For each subject we ask two separate questions:
+For each subject I ask two separate questions:
   COVERAGE  - does ANY draw in the pool contain an acceptable answer?
               (the ceiling any selector could reach)
   REALIZED  - does the current aggregator actually output one?
-              (what we score today)
+              (what I score today)
 
 coverage - realized = how much is recoverable by better SELECTION.
 1 - coverage        = how much needs better GENERATION (or is unknowable).
@@ -83,7 +83,7 @@ def analyse(pool: dict[str, list[str]], relation: str, channel: str,
             # REALIZED means the aggregator actually emitted exactly that set.
             # Both are exact-match, deliberately stricter than the graded F1,
             # because the question here is "is the answer retrievable at all",
-            # not "how much partial credit did we get".
+            # not "how much partial credit did I get".
             alias_sets = [{normalize(a) for a in al} for al in gold_aliases(row)]
             present = set(vote_shares(draws, channel))
             got = {normalize(x) for x in predict_set(draws, channel, tau=param)}
@@ -93,7 +93,7 @@ def analyse(pool: dict[str, list[str]], relation: str, channel: str,
                             and len(got) == len(alias_sets))
             else:
                 # empty gold: covered means abstention is reachable, realized
-                # means we actually abstained
+                # means I actually abstained
                 covered = True
                 realized = not got
 

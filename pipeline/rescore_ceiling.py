@@ -8,7 +8,7 @@ tolerance-correct candidate when the pool contains one.
 
 Three quantities, all measured with the official scorer via scorer.py:
 
-  BASELINE   the shipped predict_numeric output (what we score today)
+  BASELINE   the shipped predict_numeric output (what I score today)
   ORACLE@inf pick a correct candidate whenever one exists anywhere in the pool
   ORACLE@k   same, but the reranker may only look at the top-k candidates by
              frequency, which is the realistic shortlist an exact-rescoring

@@ -30,7 +30,7 @@ follow, and they need different amounts of assumption:
     C_k is LINEAR in the p_i. Given correct p_i the rule is exactly optimal.
 
  B. VARIABLE GOLD SIZE (borders, stockX, award). E[F1] depends on the whole
-    distribution of |gold|, so we need a generative model: candidate i is in gold
+    distribution of |gold|, so I need a generative model: candidate i is in gold
     independently with probability p_i, plus U unseen golds the pool never
     proposed, U drawn from the empirical unseen-count distribution of the FITTING
     split. E[F1](k) is then estimated by Monte Carlo. This regime carries two real
@@ -38,7 +38,7 @@ follow, and they need different amounts of assumption:
 
 THE HONEST STATEMENT OF WHAT IS PROVED. With p_i = P(candidate i in gold | the
 whole share vector), the prefix maximiser weakly dominates every global threshold.
-What we can actually FIT is q(share_i) = P(in gold | that candidate's own share),
+What I can actually FIT is q(share_i) = P(in gold | that candidate's own share),
 which ignores the rest of the row. So the rule is Bayes-optimal only within the
 restricted model "share_i is a sufficient statistic". It is NOT dominant by
 construction, and calib_diag.py already shows the assumption is violated for
@@ -392,7 +392,7 @@ def ev_multi(qs: list[float], size: dict, rng: np.random.Generator,
     cum = np.cumsum(B, axis=1)
     ks = np.arange(1, kcap + 1)
     ev = (2.0 * cum / (ks[None, :] + G[:, None])).mean(axis=0)
-    ev0 = float((G == 0).mean())      # F1 = 1 only when we emit nothing AND G == 0
+    ev0 = float((G == 0).mean())      # F1 = 1 only when I emit nothing AND G == 0
     return np.concatenate([[ev0], ev])
 
 

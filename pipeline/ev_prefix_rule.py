@@ -164,7 +164,7 @@ def run(rel: str, ch: str, ship_tau: float, n_mc: int = 4000,
                  for (share, _), y in zip(r["ranked"], r["labels"])]
         curves[use] = fit_isotonic(pairs)
         unseen[use] = [r["unseen"] for r in data[fit]] or [0]
-    # for TEST, fit on everything we are allowed to see
+    # for TEST, fit on everything I am allowed to see
     pairs = [(share, y) for sp in ("train", "val") for r in data[sp]
              for (share, _), y in zip(r["ranked"], r["labels"])]
     curves["test"] = fit_isotonic(pairs)

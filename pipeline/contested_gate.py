@@ -12,12 +12,12 @@ computable from draws alone on the TEST split:
 
   SPLIT-HALF  fire where two disjoint halves of the subject's own draws select
               different answers. Zero free parameters. This is the model telling
-              us, in its own sampling variance, that it has not decided.
+              me, in its own sampling variance, that it has not decided.
   SHARE-RATIO fire where support(rank2)/support(rank1) >= r. One free parameter,
               so r is reported as a curve rather than chosen here; any use of it
               must fix r by a draws-only rule declared before scoring.
 
-For each gate we report the count of rows it fires on (on val AND on test, since
+For each gate I report the count of rows it fires on (on val AND on test, since
 the gate needs no gold), and inside the firing set the contested base rate
 23:12-style, which IS the accuracy a verifier must exceed to break even.
 """

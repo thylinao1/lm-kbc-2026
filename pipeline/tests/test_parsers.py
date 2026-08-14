@@ -126,7 +126,7 @@ def test_vote_share_and_tau():
 
 
 def test_duplicate_predictions_do_not_inflate_share():
-    """The grader dedups by normalized form; our counting must agree, so a draw
+    """The grader dedups by normalized form; my counting must agree, so a draw
     repeating a country twice counts once."""
     shares = vote_shares(["Austria; Austria; Austria"], "borders_list")
     assert shares["austria"][0] == 1.0

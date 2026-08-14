@@ -2,7 +2,7 @@
 
 Discipline: thresholds are chosen on TRAIN. val is read once per candidate as a
 selection set and reported honestly as such. The official evaluate.py is the
-only scorer; we never reimplement the metric.
+only scorer; I never reimplement the metric.
 """
 from __future__ import annotations
 

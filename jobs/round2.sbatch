@@ -20,7 +20,7 @@ cd $HOME/akbc
 REV=5bbc2fb1c1b2c611d06e3d9f23c170ba21659d89
 
 # Round 2 priorities, chosen from measured gaps rather than from the plan:
-#  hasArea is our largest shortfall vs the field (0.76 vs a published 0.85) and
+#  hasArea is my largest shortfall vs the field (0.76 vs a published 0.85) and
 #  had only ONE frame; award had NO channel at all and is worth +0.0078 free.
 $PY pipeline/generate_many.py --channels area_listing,area_infobox,award_list \
     --splits train,val --n 30 --revision $REV --max-model-len 8192 --gpu-mem-util 0.90

@@ -131,7 +131,7 @@ def part_c() -> None:
     print(f"   rows={n}  empty={cnt[0]} ({cnt[0]/n:.3f})  "
           f"mean gold on NON-empty rows = {tot/(n-cnt[0]):.3f}")
     print("\ngold mean on TEST is not observable; the 3.58 figure in the log is the")
-    print("train+val non-empty mean, and our TEST answered-row set size is above.")
+    print("train+val non-empty mean, and my TEST answered-row set size is above.")
 
 
 if __name__ == "__main__":

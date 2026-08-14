@@ -12,7 +12,7 @@ comparison asks it to judge two values it is handed. These are different conditi
 second can be right when the first is wrong. The failure mode of the obvious version, a yes/no
 probe on a single fact, is well documented and was already recorded against this campaign:
 verify-probes accept nearly everything (Singhania et al., rank-then-select 49.5 against
-verify-probe 8.0), and our own standalone liveness gate measured inert. A DUEL does not have
+verify-probe 8.0), and my own standalone liveness gate measured inert. A DUEL does not have
 that failure mode, because the model cannot say yes to both. It must spend its probability
 mass on one side, which is what makes the signal informative rather than a yes-bias readout.
 

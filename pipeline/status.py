@@ -1,7 +1,7 @@
 """Campaign state of play: where every relation stands and what it implies.
 
 Reads whatever result files exist and answers the only question that matters:
-given what we have measured so far, what would we score, and how far is that
+given what I have measured so far, what would I score, and how far is that
 from the bar?
 
 Projection rule, deliberately conservative:
@@ -26,7 +26,7 @@ BAR = 0.6961          # live #1 on the test board
 FIELD_ENVELOPE = 0.7015   # weighted sum of every per-relation test best
 
 # Best per-relation figure anyone has posted on the TEST phase (first-party
-# scrape, 2026-08-11). Used only for context, never as our own number.
+# scrape, 2026-08-11). Used only for context, never as my own number.
 TEST_FRONTIER = {
     "countryLandBordersCountry": (0.9755, "quangtran276"),
     "personHasCityOfDeath": (0.6000, "ruggsea"),
@@ -86,7 +86,7 @@ def main() -> int:
     # Test-prior re-estimates for the abstention relations. Validation and test
     # have materially different empty-gold rates (measured by probe #1), so the
     # raw val figure is a biased estimate of test for those three. Where a
-    # prior_shift result exists we show it as the better test estimate.
+    # prior_shift result exists I show it as the better test estimate.
     shifted: dict[str, dict] = {}
     ps = pdir / "prior_shift.json"
     if ps.exists():
@@ -101,7 +101,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print(f"{'relation':<12} {'rows':>5} {'ours(val)':>10} {'testprior':>10} "
+    print(f"{'relation':<12} {'rows':>5} {'mine(val)':>10} {'testprior':>10} "
           f"{'proj':>7} {'frontier':>9} {'gap':>7}  source")
     print("-" * 92)
     proj_total = 0.0
@@ -110,12 +110,12 @@ def main() -> int:
         floor = TEST_EMPTY_PRIOR[rel]
         m = measured.get(rel)
         sh = shifted.get(rel)
-        ours = m["val_f1"] if m else None
+        mine = m["val_f1"] if m else None
         # best available estimate of TEST performance
         if sh is not None:
             proj = sh["f1"]
-        elif ours is not None:
-            proj = ours
+        elif mine is not None:
+            proj = mine
         else:
             proj = floor
         proj_total += w * proj
@@ -123,7 +123,7 @@ def main() -> int:
         flag = "  PARSE-QA FAIL" if (m and not m.get("parse_ok", True)) else ""
         src = (f"{sh['how']} tau={sh['tau']}" if sh else (m["how"] if m else "not run yet"))
         print(f"{SHORT[rel]:<12} {w:>5} "
-              f"{(f'{ours:.4f}' if ours is not None else '-'):>10} "
+              f"{(f'{mine:.4f}' if mine is not None else '-'):>10} "
               f"{(f'{sh[chr(102)+chr(49)]:.4f}' if sh else '-'):>10} "
               f"{proj:>7.4f} {front:>9.4f} {proj-front:>+7.4f}  {src}{flag}")
 
@@ -134,7 +134,7 @@ def main() -> int:
         print("  (testprior = val reweighted to the MEASURED test empty rate; the "
               "better estimate of test for the three abstention relations)")
     print()
-    print(f"  bar to beat (live #1)        : {BAR:.4f}   -> we are {overall-BAR:+.4f}")
+    print(f"  bar to beat (live #1)        : {BAR:.4f}   -> I am {overall-BAR:+.4f}")
     print(f"  whole-field envelope         : {FIELD_ENVELOPE:.4f}   "
           f"(sum of EVERY per-relation test best; beating it needs net-new capability)")
     print(f"  all-empty floor              : 0.2147")

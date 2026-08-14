@@ -2,13 +2,13 @@
 
 Inputs used here are only (i) the grader-returned per-relation TEST score
 0.9786, (ii) probe #1's reading that exactly 10 of the 67 TEST rows have empty
-gold, (iii) our own cached TEST pool. No external facts.
+gold, (iii) my own cached TEST pool. No external facts.
 
 Two results:
-  A. The 10 rows we abstain on are PROVABLY the 10 empty-gold rows. Any other
+  A. The 10 rows I abstain on are PROVABLY the 10 empty-gold rows. Any other
      assignment forces some answered row above F1 = 1, which is impossible.
   B. Given A, the mean gold set size on the answered TEST rows must be close to
-     our emitted 4.79, so the "we over-predict 4.79 against a gold mean of 3.58"
+     my emitted 4.79, so the "I over-predict 4.79 against a gold mean of 3.58"
      line in the log is basis-mixed: 3.58 is the train+val gold mean, and the
      board score is arithmetically incompatible with that much over-prediction.
 """
@@ -38,7 +38,7 @@ def main() -> None:
     max_n = max(len(p) for p in answered.values())
 
     print("=" * 80)
-    print("MEASURED FROM OUR OWN TEST POOL (tau = 0.15, the shipped config)")
+    print("MEASURED FROM MY OWN TEST POOL (tau = 0.15, the shipped config)")
     print("=" * 80)
     print(f"rows                     {len(preds)}")
     print(f"abstained rows           {n_abstain}   ({n_abstain/len(preds):.3f})")
@@ -51,10 +51,10 @@ def main() -> None:
     print("A. THE ABSTENTIONS ARE PROVABLY THE RIGHT ROWS")
     print("=" * 80)
     print(f"grader mass = {F1_TEST} * {N_ROWS} = {mass:.4f} row-points")
-    print("Let a = how many of our 10 abstentions land on an empty-gold row.")
+    print("Let a = how many of my 10 abstentions land on an empty-gold row.")
     print("  * an abstention on empty gold scores 1 (P=1, R=1); on non-empty gold, 0")
     print("  * an ANSWERED row whose gold is empty scores 0 (P=0, R=1)")
-    print(f"  * so the empty-gold rows we answered number {N_EMPTY_GOLD} - a, each worth 0,")
+    print(f"  * so the empty-gold rows I answered number {N_EMPTY_GOLD} - a, each worth 0,")
     print(f"    and the non-empty answered rows number {len(answered)} - ({N_EMPTY_GOLD}-a)"
           f" = {len(answered)-N_EMPTY_GOLD} + a")
     print("\n  a  |  mass that must come from non-empty answered rows | rows available | mean F1")
@@ -71,7 +71,7 @@ def main() -> None:
           f"{len(answered)} = {ans_mean:.4f}")
 
     print("\n" + "=" * 80)
-    print("B. HOW MUCH CAN WE ACTUALLY BE OVER-PREDICTING?")
+    print("B. HOW MUCH CAN I ACTUALLY BE OVER-PREDICTING?")
     print("=" * 80)
     print("Per row F1 = 2*tp/(n+G), so with e = n - tp wrong predictions and")
     print("m = G - tp missed golds:  e + m = (1 - F1) * (n + G).")
@@ -83,7 +83,7 @@ def main() -> None:
               f"<= {ng} * {shortfall:.4f} = {ng*shortfall:.1f}")
     print(f"\nSo at most a few tens of the {sum_n} emitted predictions can be wrong.")
     print("Now test the log's claim directly. If the answered TEST rows really had a")
-    print("gold mean of 3.58 while we emit 4.79, then even with PERFECT recall")
+    print("gold mean of 3.58 while I emit 4.79, then even with PERFECT recall")
     print("(tp = G on every row) the mean F1 could not exceed:")
     for g in (3.58, 4.0, 4.5, 4.55, 4.79):
         print(f"   gold mean {g:4.2f}:  2*{g:.2f}/({sum_n/len(answered):.2f}+{g:.2f}) "
@@ -99,7 +99,7 @@ def main() -> None:
     print(f"\nFor contrast, the 3.58 figure: train+val non-empty gold mean = "
           f"{sum(nz)/len(nz):.3f} over {len(nz)} rows. That is a TRAIN+VAL statistic.")
     print("CONCLUSION: the TEST subjects are bordier than the train+val subjects, and")
-    print("the 'we over-predict by 1.2 objects per row' reading is a basis mix, not a")
+    print("the 'I over-predict by 1.2 objects per row' reading is a basis mix, not a")
     print("defect to repair. There is no systematic over-prediction to trim.")
 
     print("\n" + "=" * 80)
