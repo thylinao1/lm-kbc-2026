@@ -20,3 +20,11 @@ PLAN.local.md
 
 # Private working notes and strategy diary, not part of the code deliverable.
 notes/
+
+# LaTeX build intermediates (the .tex, .bib, .sty and final PDF are tracked)
+paper/build/*.aux
+paper/build/*.log
+paper/build/*.out
+paper/build/*.blg
+paper/build/*.bcf
+paper/build/*.run.xml

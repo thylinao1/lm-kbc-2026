@@ -1,0 +1,62 @@
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{{dukesun99}(2026)}]{dukesun2026}
+{dukesun99}. 2026.
+\newblock {elicitation-beats-selection}: A multi-channel numeric elicitation
+  system for the lm-kbc 2026 challenge.
+\newblock Public code repository, CC BY 4.0.
+\newblock \url{https://github.com/dukesun99/elicitation-beats-selection}.
+
+\bibitem[{{Google}(2026)}]{gemma431b}
+{Google}. 2026.
+\newblock {gemma-4-31B} base model.
+\newblock Model weights, revision 5bbc2fb1c1b2c611d06e3d9f23c170ba21659d89.
+\newblock Served in completion mode; 31{,}273{,}088{,}876 parameters measured
+  from the safetensors index.
+
+\bibitem[{Kalo et~al.(2025)Kalo, Razniewski, Zhang, and Nguyen}]{kalo2025lmkbc}
+Jan-Christoph Kalo, Simon Razniewski, Bohui Zhang, and Tuan-Phong Nguyen. 2025.
+\newblock \href {https://ceur-ws.org/Vol-4041/paper7.pdf} {{LM-KBC} 2025: The
+  4th large language models for knowledge base construction challenge --
+  overview and results}.
+\newblock In \emph{Proceedings of the 4th Challenge on Language Models for
+  Knowledge Base Construction (LM-KBC) at ISWC}, volume 4041 of \emph{CEUR
+  Workshop Proceedings}. CEUR-WS.org.
+
+\bibitem[{Razniewski et~al.(2024)Razniewski, Kalo, Singhania, Pan, Nguyen, and
+  Zhang}]{lmkbc2024}
+Simon Razniewski, Jan-Christoph Kalo, Sneha Singhania, Jeff~Z. Pan, Tuan-Phong
+  Nguyen, and Bohui Zhang, editors. 2024.
+\newblock \href {https://ceur-ws.org/Vol-3853/} {\emph{Joint Proceedings of the
+  2nd Workshop on Knowledge Base Construction from Pre-trained Language Models
+  (KBC-LM) and the 3rd Challenge on Language Models for Knowledge Base
+  Construction (LM-KBC) at ISWC}}, volume 3853 of \emph{CEUR Workshop
+  Proceedings}. CEUR-WS.org.
+
+\bibitem[{{ruggsea}(2026)}]{ruggsea2026}
+{ruggsea}. 2026.
+\newblock {lmkbc26-share}: A closed-book system for the lm-kbc 2026 challenge.
+\newblock Public code repository.
+\newblock \url{https://github.com/ruggsea/lmkbc26-share}; no licence file,
+  recipes reimplemented from the method description only.
+
+\bibitem[{Singhania et~al.(2022)Singhania, Nguyen, and
+  Razniewski}]{singhania2022lmkbc}
+Sneha Singhania, Tuan-Phong Nguyen, and Simon Razniewski. 2022.
+\newblock \href {https://ceur-ws.org/Vol-3274/} {{LM-KBC}: Knowledge base
+  construction from pre-trained language models}.
+\newblock In \emph{Proceedings of the Semantic Web Challenge on Knowledge Base
+  Construction from Pre-trained Language Models (LM-KBC) at ISWC}, volume 3274
+  of \emph{CEUR Workshop Proceedings}. CEUR-WS.org.
+
+\bibitem[{Wang et~al.(2023)Wang, Wei, Schuurmans, Le, Chi, Narang, Chowdhery,
+  and Zhou}]{wang2023selfconsistency}
+Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc~V. Le, Ed~H. Chi, Sharan Narang,
+  Aakanksha Chowdhery, and Denny Zhou. 2023.
+\newblock \href {https://arxiv.org/abs/2203.11171} {Self-consistency improves
+  chain-of-thought reasoning in language models}.
+\newblock In \emph{The Eleventh International Conference on Learning
+  Representations (ICLR)}.
+
+\end{thebibliography}
