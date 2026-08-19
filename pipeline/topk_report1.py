@@ -16,7 +16,7 @@ from topk_numeric import (KMAX, build_table, cov_at_k, default_args,
                           demo_subjects, score_policy, verify_gold_shape)
 
 PAIRS = [("hasCapacity", "cap_recite"), ("hasArea", "area_recite")]
-OUT = Path("out")
+OUT = Path(__file__).resolve().parent.parent / "analysis"
 
 
 def main() -> int:

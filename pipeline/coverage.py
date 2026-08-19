@@ -3,7 +3,7 @@
 This is the instrument the whole hasCapacity push depends on. The live #1
 reported that on capacity their pool contained the gold for 76-77/100 subjects
 while their selector realized only 35-38, then exhausted 24+ aggregation-side
-mechanisms trying to close it. That gap is the campaign.
+mechanisms trying to close it. That gap is what this module measures.
 
 For each subject I ask two separate questions:
   COVERAGE  - does ANY draw in the pool contain an acceptable answer?

@@ -12,8 +12,8 @@ THE CONSTRUCTION, which is right by construction rather than by validation:
 split each subject's draws into two DISJOINT halves and run the shipped selector
 on each. If both halves return the same answer (within the grader's own 5% ball)
 then the selector's output is not being decided by sampling noise on that row,
-and no better estimator of the SAME functional -- the sampling distribution over
-values -- can change it. Rows where the halves disagree are the only rows a
+and no better estimator of the SAME functional (the sampling distribution over
+values) can change it. Rows where the halves disagree are the only rows a
 perfect de-noiser can touch.
 
 That gives two numbers that matter more than any val delta:

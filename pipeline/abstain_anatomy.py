@@ -1,7 +1,7 @@
 """Anatomy of the two abstention relations (personHasCityOfDeath, companyTradesAtStockExchange).
 
 Read-only analysis. Touches nothing that ships: no writes to configs/, submissions/
-or NOTES.local.md. Everything is measured on the LOCALLY CACHED pools, so it costs
+or docs/engineering-notes.md. Everything is measured on the LOCALLY CACHED pools, so it costs
 zero GPU and zero submissions.
 
 Closed book: the only factual inputs are dataset2026/data/{train,val}.jsonl gold via

@@ -44,7 +44,7 @@ PAIRS = [("hasCapacity", "cap_recite"), ("hasArea", "area_recite")]
 # confirmed 0.7060 submission. Used only to express the projection as a delta
 # on a known quantity; nothing here reads test gold.
 SHIPPED_TEST_F1 = {"hasCapacity": 0.3367, "hasArea": 0.8700}
-OUT = Path("out")
+OUT = Path(__file__).resolve().parent.parent / "analysis"
 NFOLD = 5
 
 

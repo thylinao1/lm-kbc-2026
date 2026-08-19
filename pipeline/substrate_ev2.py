@@ -211,8 +211,7 @@ def main() -> int:
               f"{1-d['union_coverage_on_nonempty']:.4f} of answerable rows")
         out[f"death_{split}"] = d
 
-    dest = Path("out"
-                "30a8a394-1df6-488a-9dd1-a63c2c72b2a9/scratchpad/substrate_ev2.json")
+    dest = Path(__file__).resolve().parent.parent / "analysis" / "substrate_ev2.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(out, indent=1, default=str))
     print(f"\nwrote {dest}")

@@ -33,7 +33,7 @@ from topk_report2 import flatten, score_policy_rows
 from topk_report3 import RankAwareIso, attach, crossfit_rank, measured, ranks_of
 
 PAIRS = [("hasCapacity", "cap_recite"), ("hasArea", "area_recite")]
-OUT = Path("out")
+OUT = Path(__file__).resolve().parent.parent / "analysis"
 
 
 def choose_k_capped(probs, kcap, margin=0.0):

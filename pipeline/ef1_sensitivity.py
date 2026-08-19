@@ -6,7 +6,7 @@ setting of a list of parameters it did not enumerate. This module re-runs the
 identical protocol (same cross-fit, same official scorer, same paired
 bootstrap) while moving one parameter at a time, and prints the sign.
 
-Nothing here writes to configs/, submissions/ or NOTES.local.md.
+Nothing here writes to configs/, submissions/ or docs/.
 
 Run:
   cd /Users/maksimsilchenko/AKBC/pipeline && source ~/mac-ml-setup/.venv/bin/activate \

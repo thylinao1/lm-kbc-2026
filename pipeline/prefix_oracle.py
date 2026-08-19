@@ -4,8 +4,9 @@ Every deployed rule (any tau, any per-row expected-F1 maximiser) emits a prefix
 of the vote-share ranking. So the best achievable by ANY such rule is the
 per-row oracle prefix: pick, with gold in hand, the k that maximises F1.
 
-That is the honest ceiling to compare a proposed cleverness against -- not the
-"keep exactly the correct ones" ceiling, which no ranking-based rule can reach.
+That is the honest ceiling to compare a proposed cleverness against. It is not
+the "keep exactly the correct ones" ceiling, which no ranking-based rule can
+reach.
 
 Also reports the best GLOBAL tau on the same rows, so the gap between
 "best single threshold" and "best per-row cut" is measured, not asserted.

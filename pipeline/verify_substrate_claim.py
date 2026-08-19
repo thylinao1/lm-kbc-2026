@@ -59,7 +59,7 @@ def null_coverage(subs, cands_by_sub, golds, nperm=NPERM, seed=0) -> float:
 
 
 def windows(cands: list[float]) -> int:
-    """How many disjoint 5% slots the candidate set spans -- the haystack size."""
+    """How many disjoint 5% slots the candidate set spans (the haystack size)."""
     if not cands:
         return 0
     xs = sorted(set(cands))
@@ -130,7 +130,7 @@ def router_pair(relation: str, split: str, base: str, other: str,
 
 
 def router_testrows(relation: str, base: str, other: str, tie_to_base: bool = True) -> int:
-    """How many TEST rows the router changes. Uses no test gold -- only whether
+    """How many TEST rows the router changes. Uses no test gold, only whether
     the emitted value differs."""
     a = _args()
     pa = load_pool(spec_for_channel(CHANNELS[base], "test", a))

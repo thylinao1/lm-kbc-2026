@@ -4,7 +4,7 @@ re-parameterisation of something the campaign has already bracketed?
 Three tests, per relation:
   1. Is k_EV a function of K (the candidate count) ALONE? If the isotonic curve
      collapses to one block, every q_i is identical and E[F1](k) depends on
-     nothing but k and K -- the "per-row expected-F1 maximiser" is then a
+     nothing but k and K: the "per-row expected-F1 maximiser" is then a
      lookup table on pool size, not a per-row decision.
   2. Is the EMITTED SET reproducible by a GLOBAL vote-share threshold? Search
      every tau on the observed share grid and report the best exact-match rate.
@@ -12,7 +12,7 @@ Three tests, per relation:
      tau family the board has already bracketed on both sides.
   3. Does the val tau-gradient agree with the one bracketed TEST measurement?
 
-Nothing here writes to configs/, submissions/ or NOTES.local.md.
+Nothing here writes to configs/, submissions/ or docs/.
 """
 from __future__ import annotations
 
@@ -59,7 +59,7 @@ def main() -> int:
                 byK[len(r["shares"])].add(ks[r["subject"]])
             det = all(len(v) == 1 for v in byK.values())
             print(f"  [{split}] k_EV determined by candidate count K alone? "
-                  f"{'YES -- not a per-row rule' if det else 'no'}  "
+                  f"{'YES, not a per-row rule' if det else 'no'}  "
                   f"({sum(1 for v in byK.values() if len(v) > 1)} of {len(byK)} "
                   f"K-values map to >1 k)")
 

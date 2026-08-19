@@ -2,7 +2,7 @@
 instrument a swap can be measured on before a submission is spent (val gold).
 
 Nothing here is an estimate presented as a measurement. The board figures are
-the confirmed per-relation TEST scores from NOTES.local.md; everything derived
+the confirmed per-relation TEST scores in docs/engineering-notes.md; everything
 from them is exact arithmetic under the metric, which is a mean of per-row F1
 over 475 rows, so one row is worth 1/475 of the overall score regardless of
 which relation it sits in.
@@ -21,7 +21,7 @@ from channels import CHANNELS
 from common import TEST_ROWS, TOTAL_TEST_ROWS, gold_primary, load_pool, rows_for, spec_for_channel
 from substrate_ev import _args, hit
 
-# Confirmed by the grader (NOTES.local.md, submission 6 of 100 returned 0.7060).
+# Confirmed by the grader (submission 6 of 100 returned 0.7060).
 MINE = {"countryLandBordersCountry": 0.9786, "hasArea": 0.8700,
         "companyTradesAtStockExchange": 0.8530, "hasCapacity": 0.3367,
         "personHasCityOfDeath": 0.6100, "awardWonBy": 0.3484}
@@ -78,7 +78,7 @@ def main() -> int:
     print("\n=== ceiling on the capacity side, from measurements already on record")
     cap_ceils = {
         "current shipped (board)": 0.3367,
-        "re-ranking ceiling est. (NOTES.local, 10000-attractor stratum conceded)": 0.435,
+        "re-ranking ceiling est. (10000-attractor stratum conceded)": 0.435,
         "single-frame pool coverage cap_recite (val, measured here)": 0.8454,
         "union coverage over 7 frames (val, measured here)": 0.9381,
     }
@@ -140,7 +140,7 @@ def main() -> int:
     out["discordance"] = disc
 
     print("\n=== GPU / disk budget for the smallest decisive run (one relation, 3 splits)")
-    # observed rates, NOTES.local canary 726317: load 133 s from NFS; 2010 draws /
+    # observed rates, canary job 726317: load 133 s from NFS; 2010 draws /
     # 14,522 decode tokens in 17 s => 118 draws/s, 854 tok/s at tp=1 on one H100-96.
     draws_per_split = {"train": 100, "val": 97, "test": 98}
     n_draws_each = 30
@@ -160,8 +160,7 @@ def main() -> int:
     print("  download at the measured token-free ~10 MB/s = "
           f"{27.4e9*2/1e6/10/60:.0f} min for a 27B; set an HF token first (log: 75 min -> minutes)")
 
-    dest = Path("out"
-                "30a8a394-1df6-488a-9dd1-a63c2c72b2a9/scratchpad/substrate_risk.json")
+    dest = Path(__file__).resolve().parent.parent / "analysis" / "substrate_risk.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(out, indent=1, default=str))
     print(f"\nwrote {dest}")

@@ -24,7 +24,7 @@ from common import TEST_ROWS, TOTAL_TEST_ROWS, load_pool, rows_for, spec_for_cha
 from ev_prefix_rule import ARGS
 
 REL, CH, TAU = "countryLandBordersCountry", "borders_list", 0.15
-F1_TEST = 0.9786          # grader-returned, NOTES.local P5
+F1_TEST = 0.9786          # grader-returned, probe P5
 N_ROWS = TEST_ROWS[REL]   # 67
 N_EMPTY_GOLD = 10         # probe #1: all-empty submission returned 0.1493 = 10/67
 

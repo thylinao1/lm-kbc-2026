@@ -1,12 +1,12 @@
 """If the EV rule IS a global vote-share threshold (ef1_ischaracter.py says it is
 on 4 of 6 relations), then its measured delta must equal the delta of that tau
-move -- and the tau axis is one the board has already bracketed on both sides.
+move; the tau axis is one the board has already bracketed on both sides.
 
 This prints, per relation, the pooled train+val macro-F1 of a GLOBAL tau sweep
-scored with the official scorer through the same harness, so the EV number can
-be read off the same curve.
+scored with the official scorer through the same code path, so the EV number
+can be read off the same curve.
 
-Nothing here writes to configs/, submissions/ or NOTES.local.md.
+Nothing here writes to configs/, submissions/ or docs/.
 """
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ GRIDS = {
 def main() -> int:
     for rel, grid in GRIDS.items():
         rows = {sp: E.build_rows(rel, sp) for sp in ("train", "val")}
-        # shipped baseline through the same harness
+        # shipped baseline through the same code path
         f_ship = []
         for sp in ("train", "val"):
             ks = {r["subject"]: E.shipped_k(r, rel) for r in rows[sp]}

@@ -131,9 +131,9 @@ def main() -> int:
     # The train curve is often flat across a run of thresholds, especially after
     # the leakage guard shrinks n. A plain argmax then returns whichever tied
     # point comes first in the grid, which is an edge of the plateau and is
-    # arbitrary. Prefer the CENTRE of the widest tied run: it is the choice most
-    # robust to the gold edits the organizers have already made once, and to
-    # val/test prior drift.
+    # arbitrary. Prefer the CENTRE of the widest tied run: it is the choice
+    # least sensitive to the gold edits the organizers have already made once,
+    # and to val/test prior drift.
     tol = 1e-9
     top = max(c["macro_f1"] for c in curves["train"])
     tied_idx = [i for i, c in enumerate(curves["train"]) if c["macro_f1"] >= top - tol]

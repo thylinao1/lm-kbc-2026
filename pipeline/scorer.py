@@ -83,9 +83,9 @@ def score_one_relation(preds_by_subject: dict[str, list[str]], relation: str,
     `subjects` restricts the average to a subset of this relation's rows. This
     is not cosmetic: the official scorer iterates the GOLD file, so a subject
     missing from preds_by_subject is scored as an empty PREDICTION (usually 0),
-    not excluded. Any honest subsetting -- for instance dropping train rows that
-    appear in their own few-shot demo block -- has to filter here, after
-    scoring, rather than by simply passing fewer predictions.
+    not excluded. Any honest subsetting (dropping train rows that appear in
+    their own few-shot demo block, say) has to filter here, after scoring,
+    rather than by simply passing fewer predictions.
     """
     pred_rows = [
         {"SubjectEntity": s, "Relation": relation, "ObjectEntities": [str(o) for o in objs]}

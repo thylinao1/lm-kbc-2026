@@ -9,13 +9,13 @@ into a number on an axis the board has already bracketed.
 PART 2. PERMUTATION CONTROL on the oracle-prefix ceiling, which is the
 proposal's "the class is not empty, the pricing is what fails" claim (+0.108
 overall for a perfect per-row cut). The campaign's own finding is that oracle
-ceilings on wide pools are inflated by coincidence (NOTES.local: "coverage is
-not knowledge", 35.5 of 84.5 capacity coverage points are chance). An oracle
+ceilings on wide pools are inflated by coincidence ("coverage is not
+knowledge": 35.5 of 84.5 capacity coverage points are chance). An oracle
 that picks the best k per row ON THE SPLIT IT IS SCORED ON has the same defect.
 Control: give every subject ANOTHER subject's gold and recompute the oracle
 gain. Whatever survives is what a rule could not possibly have known.
 
-Nothing here writes to configs/, submissions/ or NOTES.local.md.
+Nothing here writes to configs/, submissions/ or docs/.
 """
 from __future__ import annotations
 

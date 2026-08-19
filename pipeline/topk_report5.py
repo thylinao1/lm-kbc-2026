@@ -36,7 +36,7 @@ from topk_report2 import NFOLD, SHIPPED_TEST_F1, flatten
 from topk_report3 import RankAwareIso, attach, crossfit_rank, measured, ranks_of
 
 PAIRS = [("hasCapacity", "cap_recite"), ("hasArea", "area_recite")]
-OUT = Path("out")
+OUT = Path(__file__).resolve().parent.parent / "analysis"
 NBUCKET = 4
 
 

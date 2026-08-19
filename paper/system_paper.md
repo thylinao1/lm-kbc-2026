@@ -5,8 +5,8 @@ LM-KBC 2026 Shared Task (5th edition), system description.
 STATUS: working draft. The submitted version of this paper is the ACL formatted
 build in `build/` (`paper.tex`, `custom.bib`, output `build/paper.pdf`), which is
 authoritative. This file is retained as the longer working record. Every number
-is measured and traceable to a logged run in NOTES.local.md. Test figures come
-from the official grader over the 475-row test set.
+is measured and traceable to a logged run in docs/engineering-notes.md. Test
+figures come from the official grader over the 475-row test set.
 
 ---
 

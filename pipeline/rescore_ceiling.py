@@ -3,7 +3,7 @@
 This is the dry-run that must happen BEFORE spending GPU on exact rescoring,
 verification, or PMI. All three of those instruments have one thing in common:
 they never change what is IN the pool, only which pool member is emitted. So
-their joint ceiling is the ORACLE RERANKER -- a rule that always picks a
+their joint ceiling is the ORACLE RERANKER, a rule that always picks a
 tolerance-correct candidate when the pool contains one.
 
 Three quantities, all measured with the official scorer via scorer.py:

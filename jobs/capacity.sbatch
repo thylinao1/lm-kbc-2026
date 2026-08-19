@@ -20,7 +20,7 @@ PY=$HOME/miniconda3/envs/csa-vllm/bin/python
 cd $HOME/akbc
 REV=5bbc2fb1c1b2c611d06e3d9f23c170ba21659d89
 
-# One model load for all 18 pools. hasCapacity is the campaign: the field best
+# One model load for all 18 pools. hasCapacity is the target relation: field best
 # on TEST is 0.3265 and the #1 published pool coverage ~0.77 against realised
 # ~0.38, having exhausted 24+ AGGREGATION mechanisms. These five frames attack
 # the GENERATION side; consensus.py then tests cross-frame agreement, which is

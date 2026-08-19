@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "lm-kbc-2026: closed-book knowledge base construction for the LM-KBC 2026 challenge"
+abstract: >-
+  Entry to the LM-KBC 2026 challenge on knowledge base construction from language models.
+  Scored 0.7060 all-rows macro-F1 on the official test set. Final standings are announced by
+  the organizers in September 2026.
+authors:
+  - family-names: Silchenko
+    given-names: Maksim
+repository-code: https://github.com/thylinao1/lm-kbc-2026
+license: "Apache-2.0"
+date-released: 2026-08-19
+keywords:
+  - "knowledge base construction"
+  - "information extraction"
+  - "language models"
+  - "shared task"
+references:
+  - type: unpublished
+    title: "Coverage Is Not Knowledge: Why Closed-Book Knowledge Base Construction Looks Selection Bound"
+    authors:
+      - family-names: Silchenko
+        given-names: Maksim
+    year: 2026
+    notes: "Under review for LM-KBC 2026."

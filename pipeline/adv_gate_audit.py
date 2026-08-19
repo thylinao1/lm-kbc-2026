@@ -13,7 +13,7 @@ Four questions, all answered from cached draws + public gold only:
       hold their sign.
 
   Q3  Is the 'answer is nevertheless present 0.811' figure knowledge or pool
-      width? Permutation control, exactly as NOTES.local did for coverage:
+      width? Permutation control, exactly as the coverage analysis did:
       give every subject ANOTHER subject's gold and recompute.
 
   Q4  What within-row AUC do TRIVIAL baselines already reach on the gated

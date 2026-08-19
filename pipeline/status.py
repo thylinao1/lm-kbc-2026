@@ -1,8 +1,7 @@
-"""Campaign state of play: where every relation stands and what it implies.
+"""State of play: where every relation stands and what it implies.
 
-Reads whatever result files exist and answers the only question that matters:
-given what I have measured so far, what would I score, and how far is that
-from the bar?
+Reads whatever result files exist and reports two things: given what I have
+measured so far, what I would score, and how far that is from the bar.
 
 Projection rule, deliberately conservative:
   * a relation with a measured val result is projected at that value
@@ -143,7 +142,7 @@ def main() -> int:
     if cap:
         c = cap["val_f1"]
         print()
-        print("  hasCapacity sensitivity (the campaign):")
+        print("  hasCapacity sensitivity (the target relation):")
         for t in (BAR, 0.71, 0.72):
             others = proj_total - TEST_ROWS["hasCapacity"] * c
             need = (t * TOTAL_TEST_ROWS - others) / TEST_ROWS["hasCapacity"]

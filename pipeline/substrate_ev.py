@@ -298,12 +298,11 @@ def main() -> int:
                   f"{s['row_oracle']:8.4f} {s['delta_router']:+10.4f} {s['delta_tuned']:+9.4f}")
     out["sims"] = sims
 
-    print("\n=== overall-score leverage (test row weights)")
+    print("\n=== overall-score sensitivity (test row weights)")
     for r, w in sorted(TEST_ROWS.items(), key=lambda kv: -kv[1]):
         print(f"  {r:30s} {w:3d} rows  d(overall)/d(F1) = {w/TOTAL_TEST_ROWS:.5f}"
               f"   1 row = {1/TOTAL_TEST_ROWS:.5f} overall")
-    dest = Path("out"
-                "30a8a394-1df6-488a-9dd1-a63c2c72b2a9/scratchpad/substrate_ev.json")
+    dest = Path(__file__).resolve().parent.parent / "analysis" / "substrate_ev.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(out, indent=1, default=str))
     print(f"\nwrote {dest}")

@@ -19,7 +19,7 @@ verified on every non-degenerate train+val row by set_metric_facts.py. Two regim
 follow, and they need different amounts of assumption:
 
  A. AT MOST ONE GOLD (hasArea, hasCapacity: always exactly 1; personHasCityOfDeath:
-    0 or 1, verified below). Candidates are made mutually exclusive -- numerics by
+    0 or 1, verified below). Candidates are made mutually exclusive: numerics by
     a 1.05/0.95 tolerance separation, strings because two distinct normalized
     predictions cannot both be the single gold. Then
 
@@ -241,9 +241,9 @@ class Calibrator:
     monotonicity in share; if P(correct) is NOT monotone in share (it is not, on
     borders and cityOfDeath) that constraint itself introduces error. `bin` drops
     the constraint. `logit` additionally uses the row context that the
-    sufficiency diagnostic says the marginal curve is missing -- the strongest
-    form of the lever, and the one the "calibration is a well-powered smooth fit"
-    argument is really about.
+    sufficiency diagnostic says the marginal curve is missing. That is the
+    strongest form of the lever, and the one the "calibration is a well-powered
+    smooth fit" argument is really about.
     """
 
     def __init__(self, kind: str, obs: list[tuple[float, int, float, int, int]]):
@@ -464,12 +464,12 @@ def run_relation(relation: str, n_mc: int, verbose: bool,
     out: dict = {"relation": relation, "channel": cfg["channel"],
                  "kind": cfg["kind"], "gold_shape": shape}
 
-    # ---- validity: the offline harness must reproduce the shipped rule exactly
+    # ---- validity: the offline evaluator must reproduce the shipped rule exactly
     for sp in ("train", "val"):
         ks = {r["subject"]: shipped_k(r, relation) for r in data[sp]}
         s = score_prefixes(data[sp], ks, relation, sp)
         out[f"shipped_{sp}"] = s["macro_f1"]
-    print(f"  SHIPPED RULE via this harness:  train {out['shipped_train']:.4f}   "
+    print(f"  SHIPPED RULE via this evaluator:  train {out['shipped_train']:.4f}   "
           f"val {out['shipped_val']:.4f}")
 
     # ---- cross-fitted application
@@ -643,7 +643,7 @@ def sufficiency(relation: str) -> dict:
 
 def print_diagnostics(relation: str) -> None:
     o = oracle_prefix(relation)
-    print(f"\n  ORACLE PREFIX CEILING ({relation}) -- the best ANY per-row cut of "
+    print(f"\n  ORACLE PREFIX CEILING ({relation}): the best ANY per-row cut of "
           f"this ranking can do")
     for sp in ("train", "val"):
         print(f"      {sp:5s} n={o[sp]['n']:3d}: shipped {o[sp]['shipped']:.4f} -> "

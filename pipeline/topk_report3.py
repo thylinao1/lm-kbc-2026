@@ -36,7 +36,7 @@ from topk_report2 import (NFOLD, SHIPPED_TEST_F1, choose_k, fit_iso, flatten,
                           reliability, score_policy_rows)
 
 PAIRS = [("hasCapacity", "cap_recite"), ("hasArea", "area_recite")]
-OUT = Path("out")
+OUT = Path(__file__).resolve().parent.parent / "analysis"
 
 
 def ranks_of(tables):

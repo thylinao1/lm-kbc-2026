@@ -3,7 +3,7 @@
 
 (1) The EV maximiser's TEST proposal is compared row by row against the tau=0.05
     configuration, which the grader ALREADY scored (0.3237 vs 0.3484 at tau
-    0.10, NOTES.local probe P4). If the two proposals are close, the EV rule's
+    0.10, probe P4). If the two proposals are close, the EV rule's
     recommendation has effectively been measured on the board already.
 (2) Decomposition of the headroom into three tiers, each measured on val:
     threshold choice, ranking quality, enumeration.
@@ -62,7 +62,7 @@ def part1() -> None:
     print(f"{'MEAN':40s} {tot[0]/n:6.1f} {tot[1]/n:6.1f} {tot[2]/n:5.1f} "
           f"{'':11s} {sum(jac)/n:16.3f}")
     print("\nThe grader scored the tau=0.05 column: awardWonBy 0.3237, against 0.3484 for")
-    print("the tau=0.10 column (NOTES.local P4). The EV column is the same size and")
+    print("the tau=0.10 column (probe P4). The EV column is the same size and")
     print("mostly the same names, so the EV rule proposes a configuration whose direction")
     print("has already been measured on the board and lost 0.0247 on the relation.")
     print("\nBreak-even, from the identity F1 = 2*tp/(n+G): enlarging an emitted set only")
